@@ -63,7 +63,7 @@ before_script:
       cd .. &&	  
       sudo ldconfig &&
       sudo depmod -a &&
-      $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.3/gcc-core-4.6.4.tar.bz2 &&
+      $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.4/gcc-core-4.6.4.tar.bz2 &&
       tar xvjf gcc-core-4.6.4.tar.bz2 &&
       cd gcc-4.6.4 &&
       mkdir build &&
