@@ -21,8 +21,8 @@ before_script:
       libstdc++5:i386 libstdc++6:i386	  
 
   ## Install CFV1 GCC toolchain
-  - sudo apt-get -qq install gcc g++ build-essential gcc-3.4 automake autoconf gdb bzip2 texinfo patch flex bison subversion	  
-	    
+  - sudo apt-get -qq install gcc g++ build-essential gcc-3.4 automake autoconf gdb bzip2 texinfo patch flex bison subversion
+  
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
       sudo mkdir -p /usr/local/coldfire/bin
       sudo mkdir -p /usr/local/coldfire/lib
