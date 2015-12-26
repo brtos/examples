@@ -54,8 +54,8 @@ before_script:
       make -j 6 &&
       sudo make install &&
       cd .. &&
-      ldconfig &&
-      depmod -a &&
+      sudo ldconfig &&
+      sudo depmod -a &&
       $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.3/gcc-core-4.6.3.tar.bz2 &&
       tar xvjf gcc-core-4.6.3.tar.bz2 &&
       cd gcc-4.6.3 &&
