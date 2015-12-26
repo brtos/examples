@@ -17,11 +17,11 @@ before_script:
   - sudo apt-get -qq install gcc-avr avr-libc
 
   ## Install 32-bit compatibility libraries
-  - sudo apt-get -qq install libc6:i386 libgcc1:i386 gcc-4.6-base:i386
-      libstdc++5:i386 libstdc++6:i386	  
+  ##- sudo apt-get -qq install libc6:i386 libgcc1:i386 gcc-4.6-base:i386
+  ##    libstdc++5:i386 libstdc++6:i386	  
 
   ## Install CFV1 GCC toolchain
-  - sudo apt-get -qq install gcc g++ build-essential automake autoconf gdb bzip2 texinfo patch flex bison subversion
+  - sudo apt-get -qq install g++ build-essential automake autoconf gdb bzip2 texinfo patch flex bison subversion
   
   ##CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages="c" --with-newlib --without-headers --disable-shared &&
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
@@ -64,9 +64,9 @@ before_script:
       cd .. &&	  
       sudo ldconfig &&
       sudo depmod -a &&
-      $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.4/gcc-core-4.6.4.tar.bz2 &&
-      tar xvjf gcc-core-4.6.4.tar.bz2 &&
-      cd gcc-4.6.4 &&
+      $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.3/gcc-core-4.6.3.tar.bz2 &&
+      tar xvjf gcc-core-4.6.3.tar.bz2 &&
+      cd gcc-4.6.3 &&
       mkdir build &&
       cd build &&      
       CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages=c --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --with-gnu-as --with-gnu-ld --disable-nls --with-headers=yes --disable-checking --without-headers &&
