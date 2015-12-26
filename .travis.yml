@@ -34,9 +34,9 @@ before_script:
       echo "setenv PATH /usr/local/coldfire/bin:${PATH}" >> ~/.cshrc &&
       mkdir -p ~/build_env &&
       cd ~/build_env &&
-      $WGET http://ftp.gnu.org/gnu/binutils/binutils-2.22.tar.bz2 &&
-      tar xvjf binutils-2.22.tar.bz2 &&
-      cd binutils-2.22/ &&
+      $WGET http://ftp.gnu.org/gnu/binutils/binutils-2.25.1.tar.bz2 &&
+      tar xvjf binutils-2.25.1.tar.bz2 &&
+      cd binutils-2.25.1/ &&
       CFLAGS="-Wno-error" ./configure  --target=m68k-elf --prefix=${INSTPREFIX} &&
       CFLAGS="-Wno-error" make &&
       sudo make install &&
