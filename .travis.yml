@@ -75,7 +75,7 @@ before_script:
       ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-newlib-reent-small --disable-malloc-debugging --enable-newlib-multithread --disable-newlib-io-float --disable-newlib-supplied-syscalls --disable-newlib-io-c99-formats --disable-newlib-mb --disable-newlib-atexit-alloc --enable-target-optspace --disable-shared --enable-static --enable-fast-install
       make -j2
       sudo PATH=${PATH}:${INSTPREFIX} make install
-      m68k-elf-gcc -v	  
+      m68k-elf-gcc -v ;	  
     fi
 
 
