@@ -1,0 +1,8 @@
+## git pull
+git subtree pull --prefix=brtos --squash brtos master
+
+## git push
+git subtree push -P brtos brtos master
+
+## git remove
+git rm -r brtos
