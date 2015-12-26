@@ -24,57 +24,57 @@ before_script:
   - sudo apt-get -qq install gcc g++ build-essential automake autoconf gdb bzip2 texinfo patch flex bison subversion
   
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
-      sudo mkdir -p /usr/local/coldfire/bin
-      sudo mkdir -p /usr/local/coldfire/lib
-      sudo mkdir -p /usr/local/coldfire/share
-      export INSTPREFIX=/usr/local/coldfire
-      export PATH=${INSTPREFIX}/bin:${PATH}
-      echo "export PATH=/usr/local/coldfire/bin:${PATH}" >> ~/.bashrc
-      echo "setenv PATH /usr/local/coldfire/bin:${PATH}" >> ~/.cshrc
-      mkdir -p ~/build_env
-      cd ~/build_env
-      $WGET http://ftp.gnu.org/gnu/binutils/binutils-2.18.tar.bz2
-      tar xvjf binutils-2.18.tar.bz2
-      cd binutils-2.18/
-      CFLAGS="-Wno-error" ./configure  --target=m68k-elf --prefix=${INSTPREFIX}
-      CFLAGS="-Wno-error" make
-      sudo make install
-      cd ..
-      cd /usr/src
-      $WGET http://ftp.sunet.se/pub/gnu/gmp/gmp-4.2.2.tar.gz
-      tar -xvf gmp-4.2.2.tar.gz
-      cd gmp-4.2.2
-      ./configure
-      make -j 2
-      sudo make install
-      cd ..
-      $WGET http://www.mpfr.org/mpfr-current/mpfr-2.3.1.tar.bz2
-      bzcat mpfr-2.3.1.tar.bz2 | tar -xf -
-      cd mpfr-2.3.1
-      ./configure
-      make -j 2
-      sudo make install
-      cd ..
-      ldconfig
-      depmod -a
-      $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.3/gcc-core-4.6.3.tar.bz2
-      tar xvjf gcc-core-4.6.3.tar.bz2
-      cd gcc-4.6.3
-      mkdir build
-      cd build
-      CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages="c" --with-newlib --without-headers --disable-shared
-      CFLAGS="-Wno-error" make
-      sudo PATH=${PATH}:${INSTPREFIX} make install
-      cd ..
-      cd ..
-      $WGET ftp://sources.redhat.com/pub/newlib/newlib-1.20.0.tar.gz
-      tar -xvf newlib-1.20.0.tar.gz
-      cd newlib-1.20.0
-      mkdir m68k-obj
-      cd m68k-obj
-      ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-newlib-reent-small --disable-malloc-debugging --enable-newlib-multithread --disable-newlib-io-float --disable-newlib-supplied-syscalls --disable-newlib-io-c99-formats --disable-newlib-mb --disable-newlib-atexit-alloc --enable-target-optspace --disable-shared --enable-static --enable-fast-install
-      make -j2
-      sudo PATH=${PATH}:${INSTPREFIX} make install
+      sudo mkdir -p /usr/local/coldfire/bin &&
+      sudo mkdir -p /usr/local/coldfire/lib  &&
+      sudo mkdir -p /usr/local/coldfire/share &&
+      export INSTPREFIX=/usr/local/coldfire  &&
+      export PATH=${INSTPREFIX}/bin:${PATH} &&
+      echo "export PATH=/usr/local/coldfire/bin:${PATH}" >> ~/.bashrc &&
+      echo "setenv PATH /usr/local/coldfire/bin:${PATH}" >> ~/.cshrc &&
+      mkdir -p ~/build_env &&
+      cd ~/build_env &&
+      $WGET http://ftp.gnu.org/gnu/binutils/binutils-2.18.tar.bz2 &&
+      tar xvjf binutils-2.18.tar.bz2 &&
+      cd binutils-2.18/ &&
+      CFLAGS="-Wno-error" ./configure  --target=m68k-elf --prefix=${INSTPREFIX} &&
+      CFLAGS="-Wno-error" make &&
+      sudo make install &&
+      cd .. &&
+      cd /usr/src &&
+      $WGET http://ftp.sunet.se/pub/gnu/gmp/gmp-4.2.2.tar.gz &&
+      tar -xvf gmp-4.2.2.tar.gz &&
+      cd gmp-4.2.2 &&
+      ./configure &&
+      make -j 6 &&
+      sudo make install &&
+      cd .. &&
+      $WGET http://www.mpfr.org/mpfr-current/mpfr-2.3.1.tar.bz2 &&
+      bzcat mpfr-2.3.1.tar.bz2 | tar -xf - &&
+      cd mpfr-2.3.1 &&
+      ./configure &&
+      make -j 6 &&
+      sudo make install &&
+      cd .. &&
+      ldconfig &&
+      depmod -a &&
+      $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.3/gcc-core-4.6.3.tar.bz2 &&
+      tar xvjf gcc-core-4.6.3.tar.bz2 &&
+      cd gcc-4.6.3 &&
+      mkdir build &&
+      cd build &&
+      CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages="c" --with-newlib --without-headers --disable-shared &&
+      CFLAGS="-Wno-error" make &&
+      sudo PATH=${PATH}:${INSTPREFIX} make install &&
+      cd .. &&
+      cd .. &&
+      $WGET ftp://sources.redhat.com/pub/newlib/newlib-1.20.0.tar.gz &&
+      tar -xvf newlib-1.20.0.tar.gz &&
+      cd newlib-1.20.0 &&
+      mkdir m68k-obj &&
+      cd m68k-obj &&
+      ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-newlib-reent-small --disable-malloc-debugging --enable-newlib-multithread --disable-newlib-io-float --disable-newlib-supplied-syscalls --disable-newlib-io-c99-formats --disable-newlib-mb --disable-newlib-atexit-alloc --enable-target-optspace --disable-shared --enable-static --enable-fast-install &&
+      make -j 6 &&
+      sudo PATH=${PATH}:${INSTPREFIX} make install &&
       m68k-elf-gcc -v ;	  
     fi
 
