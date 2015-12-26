@@ -33,9 +33,9 @@ before_script:
       echo "setenv PATH /usr/local/coldfire/bin:${PATH}" >> ~/.cshrc &&
       mkdir -p ~/build_env &&
       cd ~/build_env &&
-      $WGET http://ftp.gnu.org/gnu/binutils/binutils-2.18.tar.bz2 &&
-      tar xvjf binutils-2.18.tar.bz2 &&
-      cd binutils-2.18/ &&
+      $WGET http://ftp.gnu.org/gnu/binutils/binutils-2.22.tar.bz2 &&
+      tar xvjf binutils-2.22.tar.bz2 &&
+      cd binutils-2.22/ &&
       CFLAGS="-Wno-error" ./configure  --target=m68k-elf --prefix=${INSTPREFIX} &&
       CFLAGS="-Wno-error" make &&
       sudo make install &&
@@ -68,7 +68,8 @@ before_script:
       cd gcc-4.6.4 &&
       mkdir build &&
       cd build &&
-      CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages="c" --with-newlib --without-headers --disable-shared &&
+      ##CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages="c" --with-newlib --without-headers --disable-shared &&
+      CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages=c --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --with-gnu-as --with-gnu-ld --disable-nls --with-headers=yes --disable-checking --without-headers &&
       CFLAGS="-Wno-error" make &&
       sudo PATH=${PATH}:${INSTPREFIX} make install &&
       cd .. &&
