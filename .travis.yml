@@ -41,9 +41,9 @@ before_script:
       sudo make install &&
       cd .. &&
       cd /usr/src &&
-      $WGET http://ftp.sunet.se/pub/gnu/gmp/gmp-6.1.1.tar.gz &&
-      tar -xvf gmp-6.1.1.tar.gz &&
-      cd gmp-6.1.1 &&
+      $WGET http://ftp.sunet.se/pub/gnu/gmp/gmp-5.1.3.tar.gz &&
+      tar -xvf gmp-5.1.3.tar.gz &&
+      cd gmp-5.1.3 &&
       ./configure &&
       make -j 6 &&
       sudo make install &&
