@@ -40,7 +40,6 @@ before_script:
       CFLAGS="-Wno-error" make &&
       sudo make install &&
       cd .. &&
-      cd /usr/src &&
       $WGET http://ftp.sunet.se/pub/gnu/gmp/gmp-5.1.3.tar.gz &&
       tar -xvf gmp-5.1.3.tar.gz &&
       cd gmp-5.1.3 &&
