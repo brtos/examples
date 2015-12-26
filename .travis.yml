@@ -54,6 +54,13 @@ before_script:
       make -j 6 &&
       sudo make install &&
       cd .. &&
+      $WGET ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz &&
+      tar -xvf mpc-1.0.3.tar.gz &&
+      cd mpc-1.0.3 &&
+      ./configure &&
+      make -j 6 &&
+      sudo make install &&
+      cd .. &&	  
       sudo ldconfig &&
       sudo depmod -a &&
       $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.3/gcc-core-4.6.3.tar.bz2 &&
