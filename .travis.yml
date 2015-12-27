@@ -30,7 +30,6 @@ before_script:
       sudo mkdir -p /usr/local/coldfire/share &&
       export TARGET=m68k-elf &&
       export INSTPREFIX=/usr/local/coldfire  &&
-      export LD_LIBRARY_PATH=/usr/local/coldfire/lib && 
       export PATH=${INSTPREFIX}/bin:${PATH} &&
       echo "export PATH=/usr/local/coldfire/bin:${PATH}" >> ~/.bashrc &&
       echo "setenv PATH /usr/local/coldfire/bin:${PATH}" >> ~/.cshrc &&
@@ -51,7 +50,7 @@ before_script:
       mkdir build &&
       cd build && 
       sudo cp -r /usr/include ${INSTPREFIX}/m68k-elf/include	&&  
-      CFLAGS="-Wno-error" ../configure --target=${TARGET} --prefix=${INSTPREFIX} --enable-languages=c --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --with-gnu-as --with-gnu-ld --disable-nls --with-headers=yes --disable-checking &&
+      CFLAGS="-Wno-error" ../configure --target=${TARGET} --prefix=${INSTPREFIX} --enable-languages=c --with-newlib --without-headers --disable-shared &&
       CFLAGS="-Wno-error" make &&
       sudo PATH=${PATH}:${INSTPREFIX} make install &&
       cd .. &&
