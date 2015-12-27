@@ -28,6 +28,7 @@ before_script:
       tar xjf coldfire*.tar.bz2 -C /tmp/ &&
       sudo cp -f -r /tmp/coldfire/* /usr/local/ &&
       rm -rf /tmp/coldfire coldfire*.tar.bz2 &&
+      export PATH=/usr/local/m68k-elf/bin:$PATH &&
       m68k-elf-gcc -v ;	  
     fi
 
