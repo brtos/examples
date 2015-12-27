@@ -1,0 +1,159 @@
+sudo mkdir -p /usr/local/coldfire/bin
+sudo mkdir -p /usr/local/coldfire/lib
+sudo mkdir -p /usr/local/coldfire/share
+
+export INSTPREFIX=/usr/local/coldfire
+export PATH=${INSTPREFIX}/bin:${PATH}
+echo "export PATH=/usr/local/coldfire/bin:${PATH}" >> ~/.bashrc
+echo "setenv PATH /usr/local/coldfire/bin:${PATH}" >> ~/.cshrc
+
+Download and Install Binutils
+
+mkdir -p ~/build_env
+cd ~/build_env
+wget -c http://ftp.gnu.org/gnu/binutils/binutils-2.18.tar.bz2
+tar xvjf binutils-2.18.tar.bz2
+cd binutils-2.18/
+CFLAGS="-Wno-error" ./configure  --target=m68k-elf --prefix=${INSTPREFIX}
+CFLAGS="-Wno-error" make
+sudo make install
+cd ..
+
+Downloading, Bootstrapping and Building GCC
+
+wget -c "http://ftp.gnu.org/gnu/gcc/gcc-4.6.3/gcc-core-4.6.3.tar.bz2"
+
+tar xvjf gcc-core-4.6.3.tar.bz2
+cd gcc-4.6.3
+mkdir build
+cd build
+CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages="c" --with-newlib --without-headers --disable-shared
+CFLAGS="-Wno-unused-result" make
+sudo PATH=${PATH}:${INSTPREFIX} make install
+cd ..
+cd ..
+
+
+wget ftp://sources.redhat.com/pub/newlib/newlib-1.20.0.tar.gz
+tar -xvf newlib-1.20.0.tar.gz
+cd newlib-1.20.0
+mkdir m68k-obj
+cd m68k-obj
+../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-newlib-reent-small --disable-malloc-debugging --enable-newlib-multithread --disable-newlib-io-float --disable-newlib-supplied-syscalls --disable-newlib-io-c99-formats --disable-newlib-mb --disable-newlib-atexit-alloc --enable-target-optspace --disable-shared --enable-static --enable-fast-install
+make -j2
+sudo PATH=${PATH}:${INSTPREFIX} make install
+
+
+You should have ample free space on your disk and I assume you are root.
+
+Become root
+sudo su
+
+Install the tools:
+
+apt-get install gcc g++ build-essential gcc-3.4 automake autoconf gdb bzip2 texinfo patch flex bison subversion
+
+Make required folders:
+mkdir /usr/local/coldfire
+mkdir /usr/local/coldfire/source
+cd /usr/local/coldfire/source
+
+Get and build binutils:
+wget http://ftp.gnu.org/gnu/binutils/binutils-2.17.tar.bz2
+bzcat binutils-2.17.tar.bz2 | tar -xf -
+mkdir build_binutils
+cd build_binutils
+../binutils-2.17/configure --prefix=/usr/local/coldfire --target=m68k-elf --enable-multilib
+make -j2
+make install
+cd ..
+
+Make and install gmp and mpfr libraries:
+cd /usr/src
+wget http://ftp.sunet.se/pub/gnu/gmp/gmp-4.2.2.tar.gz
+tar -xvf gmp-4.2.2.tar.gz
+cd gmp-4.2.2
+./configure
+make -j 2
+make install
+cd ..
+wget http://www.mpfr.org/mpfr-current/mpfr-2.3.1.tar.bz2
+bzcat mpfr-2.3.1.tar.bz2 | tar -xf -
+cd mpfr-2.3.1
+./configure
+make -j 2
+make install
+cd ..
+
+Update library configuration:
+ldconfig
+depmod -a
+
+Download newlib and gcc:
+wget ftp://sources.redhat.com/pub/newlib/newlib-1.16.0.tar.gz
+tar -xzf newlib-1.16.0.tar.gz
+wget ftp://ftp.mpi-sb.mpg.de/pub/gnu/mirror/gcc.gnu.org/pub/gcc/releases/gcc-4.2.3/gcc-4.2.3.tar.bz2
+bzcat gcc-4.2.3.tar.bz2 | tar -xf -
+
+***IMPORTANT: DO NOT COMPILE WITHIN THE SOURCE DIR***
+mkdir build_gcc
+cd build_gcc
+PATH="$PATH:/usr/local/coldfire/bin"
+export LD_LIBRARY_PATH=/usr/local/lib
+cp -r /usr/include /usr/local/coldfire/m68k-elf/include
+(to solve ..
+./tsystem.h:79:19: stdio.h: No such file or directory
+./tsystem.h:82:23: sys/types.h: No such file or directory
+./tsystem.h:85:19: errno.h: No such file or directory
+./tsystem.h:92:20: string.h: No such file or directory
+./tsystem.h:93:20: stdlib.h: No such file or directory
+./tsystem.h:94:20: unistd.h: No such file or directory
+./tsystem.h:100:18: time.h: No such file or directory
+)
+Configure gcc:
+../gcc-4.2.3/configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --target=m68k-elf \
+--disable-libmudflap --disable-libssp --disable-libgomp --enable-threads \
+--enable-languages=c --disable-checking --disable-shared --with-newlib\
+--with-bugurl=http://deneb.homedns.org/things --with-pkgversion=HIRTS-0.1 \
+--disable-nls --prefix=/usr/local/coldfire --with-headers=/usr/src/linux/include \
+--enable-poison-system-directories --with-build-time-tools=/usr/local/coldfire/bin
+Notes:
+1. with-arch=cf would make only coldfire-based binaries, but is not supported in 4.2.3.
+2. c++ does not work as well for some issue with libstdc++
+3. /usr/src/linux should refer to the current linux kernel sources.
+4. make -j4 CFLAGS="-I/usr/local/coldfire/source/newlib-1.16.0/newlib/libc/include does not work because of incompatible headers in newlib/libc
+Make gcc:
+make -j6
+You may like to time the build using:
+time make -j6 (3m8.346s on my core 2 duo machine)
+make install
+cd ..
+Make and install newlib
+cd newlib-1.16.0
+./configure --target=m68k-elf --prefix=/usr/local/coldfire
+make -j6
+make install
+cd ..
+Check the toolchain:
+m68k-elf-gcc -v
+Using built-in specs.
+Target: m68k-elf
+Configured with: ../gcc-4.2.3/configure –build=i686-pc-linux-gnu –host=i686-pc-linux-gnu –target=m68k-elf –disable-libmudflap –disable-libssp –disable-libgomp –enable-threads –disable-libstdcxx-pch -disable-threads –enable-languages=c –disable-checking –with-gnu-as –with-gnu-ld –with-bugurl=http://deneb.homedns.org/things –disable-shared –with-newlib –with-pkgversion=HIRTS-0.1 –disable-nls –prefix=/usr/local/coldfire –with-headers=/usr/src/linux/include –enable-poison-system-directories –with-build-time-tools=/usr/local/coldfire/bin
+Thread model: single
+gcc version 4.2.3
+Compile s simple hello world program:
+cd /tmp
+emacs hello_world_m68k.c
+Enter the following simple program:
+#include <stdio.h>
+int hello_world (int argc, char *argv[])
+{
+int i;
+printf ("Hello World\n");
+return (0);
+}
+Press C-x C-s to save and C-x C-c to exit
+Compile the program:
+m68k-elf-gcc -g -c hello_world.c
+
+

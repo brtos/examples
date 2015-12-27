@@ -21,15 +21,14 @@ before_script:
   ##    libstdc++5:i386 libstdc++6:i386	  
 
   ## Install CFV1 GCC toolchain
-  - sudo apt-get -qq install gcc g++ build-essential automake autoconf gdb bzip2 texinfo patch flex bison subversion libgmp-dev libmpfr-dev libmpc-dev
+  - sudo apt-get -qq install g++ build-essential automake autoconf gdb bzip2 texinfo patch flex bison subversion
   
   ##CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages="c" --with-newlib --without-headers --disable-shared &&
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
       sudo mkdir -p /usr/local/coldfire/bin &&
       sudo mkdir -p /usr/local/coldfire/lib  &&
       sudo mkdir -p /usr/local/coldfire/share &&
-      export TARGET=m68k-elf &&
-      export INSTPREFIX=/usr/local/coldfire  &&	  
+      export INSTPREFIX=/usr/local/coldfire  &&
       export PATH=${INSTPREFIX}/bin:${PATH} &&
       echo "export PATH=/usr/local/coldfire/bin:${PATH}" >> ~/.bashrc &&
       echo "setenv PATH /usr/local/coldfire/bin:${PATH}" >> ~/.cshrc &&
@@ -38,16 +37,39 @@ before_script:
       $WGET http://ftp.gnu.org/gnu/binutils/binutils-2.25.1.tar.bz2 &&
       tar xvjf binutils-2.25.1.tar.bz2 &&
       cd binutils-2.25.1/ &&
-      CFLAGS="-Wno-error" ./configure  --target=${TARGET} --prefix=${INSTPREFIX} &&
+      CFLAGS="-Wno-error" ./configure  --target=m68k-elf --prefix=${INSTPREFIX} &&
       CFLAGS="-Wno-error" make &&
       sudo make install &&
-      cd .. &&         
+      cd .. &&
+      $WGET http://ftp.sunet.se/pub/gnu/gmp/gmp-5.1.3.tar.gz &&
+      tar -xvf gmp-5.1.3.tar.gz &&
+      cd gmp-5.1.3 &&
+      ./configure &&
+      make -j 6 &&
+      sudo make install &&
+      cd .. &&
+      $WGET http://www.mpfr.org/mpfr-current/mpfr-3.1.3.tar.bz2 &&
+      bzcat mpfr-3.1.3.tar.bz2 | tar -xf - &&
+      cd mpfr-3.1.3 &&
+      ./configure &&
+      make -j 6 &&
+      sudo make install &&
+      cd .. &&
+      $WGET ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz &&
+      tar -xvf mpc-1.0.3.tar.gz &&
+      cd mpc-1.0.3 &&
+      ./configure &&
+      make -j 6 &&
+      sudo make install &&
+      cd .. &&	  
+      sudo ldconfig &&
+      sudo depmod -a &&
       $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.3/gcc-core-4.6.3.tar.bz2 &&
       tar xvjf gcc-core-4.6.3.tar.bz2 &&
       cd gcc-4.6.3 &&
       mkdir build &&
       cd build &&      
-      CFLAGS="-Wno-error" ../configure --target=${TARGET} --prefix=${INSTPREFIX} --enable-languages=c --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --with-gnu-as --with-gnu-ld --disable-nls --with-headers=yes --disable-checking --without-headers &&
+      CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages=c --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --with-gnu-as --with-gnu-ld --disable-nls --with-headers=yes --disable-checking --without-headers &&
       CFLAGS="-Wno-error" make &&
       sudo PATH=${PATH}:${INSTPREFIX} make install &&
       cd .. &&
@@ -57,11 +79,9 @@ before_script:
       cd newlib-1.20.0 &&
       mkdir m68k-obj &&
       cd m68k-obj &&
-      ../configure --target=${TARGET} --prefix=${INSTPREFIX} --enable-newlib-reent-small --disable-malloc-debugging --enable-newlib-multithread --disable-newlib-io-float --disable-newlib-supplied-syscalls --disable-newlib-io-c99-formats --disable-newlib-mb --disable-newlib-atexit-alloc --enable-target-optspace --disable-shared --enable-static --enable-fast-install &&
+      ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-newlib-reent-small --disable-malloc-debugging --enable-newlib-multithread --disable-newlib-io-float --disable-newlib-supplied-syscalls --disable-newlib-io-c99-formats --disable-newlib-mb --disable-newlib-atexit-alloc --enable-target-optspace --disable-shared --enable-static --enable-fast-install &&
       make -j 6 &&
       sudo PATH=${PATH}:${INSTPREFIX} make install &&
-      cd .. &&
-      cd .. &&	  
       m68k-elf-gcc -v ;	  
     fi
 
