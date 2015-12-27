@@ -24,13 +24,9 @@ before_script:
   - sudo apt-get -qq install gcc g++ build-essential automake autoconf gdb bzip2 texinfo patch flex bison
   
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
-      export INSTPREFIX=/usr/local/coldfire  &&
-      export PATH=${INSTPREFIX}/bin:${PATH} &&
-      echo "export PATH=/usr/local/coldfire/bin:${PATH}" >> ~/.bashrc &&
-      echo "setenv PATH /usr/local/coldfire/bin:${PATH}" >> ~/.cshrc &&
       $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
       tar xjf coldfire*.tar.bz2 -C /tmp/ &&
-      sudo cp -f -r /tmp/coldfire/* /usr/local/ &&
+      sudo cp -f -r /tmp/coldfire/* /usr/ &&
       rm -rf /tmp/coldfire coldfire*.tar.bz2 &&
       m68k-elf-gcc -v ;	  
     fi
