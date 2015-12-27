@@ -26,14 +26,12 @@ before_script:
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
       $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
       tar xjf coldfire*.tar.bz2 -C /tmp/ &&
-      sudo cp -f -r /tmp/coldfire/* /usr/local/ &&
-      /tmp/coldfire/bin/m68k-elf-gcc --version &&
-      rm -rf /tmp/coldfire coldfire*.tar.bz2;
+      /tmp/coldfire/bin/m68k-elf-gcc --version;
     fi
 
 
 script:
-  ## regression-tests/Makefile handles most of generic logic
+  ## tests/Makefile handles most of generic logic
   - "make -C tests/??-$BUILD_TYPE RUNALL=true summary"
 
 after_script:
