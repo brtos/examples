@@ -50,7 +50,7 @@ before_script:
       patch -p1 < ../gcc-3.4.6-amd64.patch &&
       mkdir build &&
       cd build && 
-      cp -r /usr/include ${INSTPREFIX}/m68k-elf/include	&&  
+      sudo cp -r /usr/include ${INSTPREFIX}/m68k-elf/include	&&  
       CFLAGS="-Wno-error" ../configure --target=${TARGET} --prefix=${INSTPREFIX} --enable-languages=c --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --with-gnu-as --with-gnu-ld --disable-nls --with-headers=yes --disable-checking &&
       CFLAGS="-Wno-error" make &&
       sudo PATH=${PATH}:${INSTPREFIX} make install &&
