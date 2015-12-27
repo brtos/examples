@@ -1,3 +1,11 @@
+Tutorials:
+1 - http://deneb.homedns.org/things/?p=30
+2 - http://www.rockbox.org/wiki/CrossCompiler
+3 - http://www.eng.uwaterloo.ca/~treideme/coldfire-gcc.php
+4 - http://www.mikrocontroller.net/articles/GCC_M68k
+5 - http://deneb.homedns.org/things/?p=37
+6 - http://www.wise-ware.com.br/?p=134&lang=en
+
 sudo mkdir -p /usr/local/coldfire/bin
 sudo mkdir -p /usr/local/coldfire/lib
 sudo mkdir -p /usr/local/coldfire/share
