@@ -26,7 +26,7 @@ before_script:
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
       $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
       tar xjf coldfire*.tar.bz2 -C /tmp/ &&
-      sudo cp -f -r /tmp/coldfire/* /usr/ &&
+      sudo cp -f -r /tmp/coldfire/* /usr/local/ &&
       rm -rf /tmp/coldfire coldfire*.tar.bz2 &&
       m68k-elf-gcc -v ;	  
     fi
