@@ -21,40 +21,17 @@ before_script:
   ##    libstdc++5:i386 libstdc++6:i386	  
 
   ## Install CFV1 GCC toolchain
-  - sudo apt-get -qq install gcc g++ build-essential automake autoconf gdb bzip2 texinfo patch flex bison subversion libgmp-dev libmpfr-dev libmpc-dev
+  - sudo apt-get -qq install gcc g++ build-essential automake autoconf gdb bzip2 texinfo patch flex bison
   
-  ##CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages="c" --with-newlib --without-headers --disable-shared &&
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
-      sudo mkdir -p /usr/local/coldfire/bin &&
-      sudo mkdir -p /usr/local/coldfire/lib  &&
-      sudo mkdir -p /usr/local/coldfire/share &&
-      export TARGET=m68k-elf &&
       export INSTPREFIX=/usr/local/coldfire  &&
       export PATH=${INSTPREFIX}/bin:${PATH} &&
       echo "export PATH=/usr/local/coldfire/bin:${PATH}" >> ~/.bashrc &&
       echo "setenv PATH /usr/local/coldfire/bin:${PATH}" >> ~/.cshrc &&
-      mkdir -p ~/build_env &&
-      cd ~/build_env &&
-      $WGET http://ftp.gnu.org/gnu/binutils/binutils-2.25.1.tar.bz2 &&
-      tar xvjf binutils-2.25.1.tar.bz2 &&
-      cd binutils-2.25.1/ &&
-      CFLAGS="-Wno-error" ./configure  --target=${TARGET} --prefix=${INSTPREFIX} &&
-      CFLAGS="-Wno-error" make &&
-      sudo make install &&
-      cd .. &&         
-      $WGET http://ftp.gnu.org/gnu/gcc/gcc-3.4.6/gcc-core-3.4.6.tar.bz2 &&
-      $WGET http://www.rockbox.org/gcc/gcc-3.4.6-amd64.patch &&
-      tar xvjf gcc-core-3.4.6.tar.bz2 &&
-      cd gcc-3.4.6 &&
-      patch -p1 < ../gcc-3.4.6-amd64.patch &&
-      mkdir build &&
-      cd build && 
-      sudo cp -r /usr/include ${INSTPREFIX}/m68k-elf/include	&&  
-      CFLAGS="-Wno-error" ../configure --target=${TARGET} --prefix=${INSTPREFIX} --enable-languages=c --with-newlib --without-headers --disable-shared &&
-      CFLAGS="-Wno-error" make &&
-      sudo PATH=${PATH}:${INSTPREFIX} make install &&
-      cd .. &&
-      cd .. &&        
+      $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
+      tar xjf coldfire*.tar.bz2 -C /tmp/ &&
+      sudo cp -f -r /tmp/coldfire/* /usr/local/ &&
+      rm -rf /tmp/coldfire coldfire*.tar.bz2 &&
       m68k-elf-gcc -v ;	  
     fi
 
