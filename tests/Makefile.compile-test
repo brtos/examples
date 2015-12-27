@@ -27,7 +27,7 @@
 
 all: summary
 
-build: examples tools
+build: examples
 
 # The stuff below is some GNU make magic to automatically make make
 # give each compile test a number, prefixed with a 0 if the number is
