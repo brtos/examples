@@ -27,9 +27,9 @@ before_script:
       $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
       tar xjf coldfire*.tar.bz2 -C /tmp/ &&
       sudo cp -f -r /tmp/coldfire/* /usr/local/ &&
+      /tmp/coldfire/bin/m68k-elf-gcc --version &&
       rm -rf /tmp/coldfire coldfire*.tar.bz2 &&
-      export PATH=/usr/local/bin:$PATH &&
-      m68k-elf-gcc -v ;	  
+      m68k-elf-gcc --version ;	  
     fi
 
 
