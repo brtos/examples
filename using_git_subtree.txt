@@ -5,6 +5,9 @@
 git remote add -f brtos https://github.com/brtos/brtos.git 
 git subtree pull --prefix=brtos --squash brtos master
 
+## or
+git remote add -f brtos https://github.com/brtos/brtos.git 
+git subtree pull -P brtos --squash brtos master
 
 ## To contribute any change back to BRTOS repo, first fork the BRTOS git repo, then add it as a remote, and finally, push the changes to the remote using git subtree push command. Then, you can create a pull request. See example below:
  
