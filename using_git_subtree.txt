@@ -1,7 +1,15 @@
-## git pull
+
+## To use BRTOS in your project, pull and merge the BRTOS git repo inside your project's folder using git subtree command. See below:
+
+## add repo as a remote and do a git subtree pull
+git remote add -f brtos https://github.com/brtos/brtos.git 
 git subtree pull --prefix=brtos --squash brtos master
 
-## git push
+
+## To contribute any change back to BRTOS repo, first fork the BRTOS git repo, then add it as a remote, and finally, push the changes to remote repo using git subtree push command. Then, you can create a pull request. See example below:
+
+## add repo as a remote and do a git subtree push
+git remote add -f brtos git@github.com:brtos/brtos.git
 git subtree push -P brtos brtos master
 
 ## git remove
