@@ -110,8 +110,8 @@ void Task_Serial(void)
             Serial_Envia_Caracter(13);
             break;
           case '4':
-            //Transmite_RAM_Ocupada();
-			OSAvailableMemory(BufferTextDebug);
+            Transmite_RAM_Ocupada();
+			//OSAvailableMemory(BufferTextDebug);
 			Serial_Envia_Frase((CHAR8*)BufferTextDebug);
 			Serial_Envia_Caracter(10);
 			Serial_Envia_Caracter(13);			

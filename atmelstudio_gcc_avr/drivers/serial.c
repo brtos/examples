@@ -74,7 +74,7 @@ ISR(USART_RX_vect, __attribute__ ( ( naked ) ))
   if (OSQueuePost(Serial,caracter) == BUFFER_UNDERRUN)
   {
     // Problema: Estouro de buffer
-    (void)OSCleanQueue(Serial);
+    (void)OSQueueClean(Serial);
   }
 
   // ************************

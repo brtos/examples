@@ -53,7 +53,7 @@ int main_demo(void)
   BRTOS_Init();
   Serial_Init(MYBAUD);
 
-  if (OSQueueCreate(&SerialPortBuffer,32,&Serial) != ALLOC_EVENT_OK)
+  if (OSQueueCreate(32,&Serial) != ALLOC_EVENT_OK)
   {
     // Oh Oh
     // Não deveria entrar aqui !!!
