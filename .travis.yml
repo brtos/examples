@@ -31,10 +31,6 @@ before_script:
       m68k-elf-gcc --version; 
     fi
 
-    - if [ ${BUILD_ARCH:-0} = avr ] ; then
-         avr-gcc --version;
-    fi
-
 script:
   ## tests/Makefile handles most of generic logic
   - "make -C tests/??-$BUILD_TYPE RUNALL=true summary"
@@ -51,4 +47,4 @@ env:
   ## of environment variable defined below
   ## - BUILD_TYPE='doxygen'  BUILD_CATEGORY='doxygen'
   - BUILD_TYPE='compile-cfv1-port' BUILD_CATEGORY='compile' BUILD_ARCH='cfv1'
-  - BUILD_TYPE='compile-avr-port' BUILD_CATEGORY='compile' BUILD_ARCH='avr'
+  - BUILD_TYPE='compile-avr-port' BUILD_CATEGORY='compile'

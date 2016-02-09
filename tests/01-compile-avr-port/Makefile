@@ -1,7 +1,7 @@
-EXAMPLESDIR=../../atmelstudio_gcc_avr/brtos_atmega2560
+EXAMPLESDIR=../../atmelstudio_gcc_avr/brtos_atmega2560/Debug
 TOOLSDIR=
 
-EXAMPLES = atmelstudio_gcc_avr/brtos_atmega2560/Debug/atmega2560
+EXAMPLES = atmelstudio_gcc_avr/atmega2560
 
 TOOLS=
 
