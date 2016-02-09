@@ -20,8 +20,7 @@ before_script:
   - sudo apt-get -qq install libc6:i386 libgcc1:i386 gcc-4.6-base:i386
       libstdc++5:i386 libstdc++6:i386	  
 
-  ## Install CFV1 GCC toolchain
- 
+  ## Install CFV1 GCC toolchain 
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
       $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
       tar xjf coldfire*.tar.bz2 -C /tmp/ &&
@@ -29,6 +28,10 @@ before_script:
       sudo cp -f -r /tmp/coldfire/* /usr/local/ &&
       rm -rf /tmp/coldfire coldfire*.tar.bz2   &&
       m68k-elf-gcc --version; 
+    fi
+	
+    - if [ ${BUILD_ARCH:-0} = avr ] ; then	     
+      avr-gcc --version; 
     fi
 
 
@@ -48,3 +51,4 @@ env:
   ## of environment variable defined below
   ## - BUILD_TYPE='doxygen'  BUILD_CATEGORY='doxygen'
   - BUILD_TYPE='compile-cfv1-port' BUILD_CATEGORY='compile' BUILD_ARCH='cfv1'
+  - BUILD_TYPE='compile-avr-port' BUILD_CATEGORY='compile' BUILD_ARCH='avr'
