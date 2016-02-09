@@ -1,6 +1,7 @@
 notifications:
   email: false
-language: c #NOTE: this will set CC=gcc which might cause trouble
+language: c 
+##NOTE: this will set CC=gcc which might cause trouble
 
 before_script:
   - WGET="travis_retry wget --continue --tries=20 --waitretry=10 --retry-connrefused --no-dns-cache --timeout 300"
@@ -21,7 +22,7 @@ before_script:
       libstdc++5:i386 libstdc++6:i386	  
 
   ## Install CFV1 GCC toolchain 
-  - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then	     
+  - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then  
       $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
       tar xjf coldfire*.tar.bz2 -C /tmp/ &&
       /tmp/coldfire/bin/m68k-elf-gcc --version &&
@@ -31,7 +32,7 @@ before_script:
     fi
 
     - if [ ${BUILD_ARCH:-0} = avr ] ; then
-      avr-gcc --version; 
+         avr-gcc --version;
     fi
 
 script:
