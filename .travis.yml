@@ -31,7 +31,7 @@ before_script:
     fi
 
 script:
-  - "make -C tests/??-$BUILD_TYPE all"
+  - "make -C tests/$BUILD_TYPE all"
 
 env:
   ## This magically kick-off parallel jobs for each of the for the sets
