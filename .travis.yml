@@ -22,6 +22,29 @@ before_script:
 
   ## Install CFV1 GCC toolchain 
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then  
+      $WGET http://ftp.sunet.se/pub/gnu/gmp/gmp-5.1.3.tar.gz &&
+      tar -xvf gmp-5.1.3.tar.gz &&
+      cd gmp-5.1.3 &&
+      ./configure &&
+      make -j 6 &&
+      sudo make install &&
+      cd .. &&
+      $WGET http://www.mpfr.org/mpfr-current/mpfr-3.1.3.tar.bz2 &&
+      bzcat mpfr-3.1.3.tar.bz2 | tar -xf - &&
+      cd mpfr-3.1.3 &&
+      ./configure &&
+      make -j 6 &&
+      sudo make install &&
+      cd .. &&
+      $WGET ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz &&
+      tar -xvf mpc-1.0.3.tar.gz &&
+      cd mpc-1.0.3 &&
+      ./configure &&
+      make -j 6 &&
+      sudo make install &&
+      cd .. &&	  
+      sudo ldconfig &&
+      sudo depmod -a &&
       $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
       tar xjf coldfire*.tar.bz2 -C /tmp/ &&
       /tmp/coldfire/bin/m68k-elf-gcc --version &&
