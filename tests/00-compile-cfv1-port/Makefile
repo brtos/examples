@@ -1,8 +1,4 @@
-EXAMPLESDIR=../../eclipse_gcc_mcf51qe128/Debug
-TOOLSDIR=
+EXAMPLEDIRS:= ../../eclipse_gcc_mcf51qe128/Debug 
 
-EXAMPLES = eclipse_gcc_mcf51qe128/mcf51qe128
-
-TOOLS=
-
-include ../Makefile.compile-test
+all:
+make -C $(EXAMPLEDIRS) all

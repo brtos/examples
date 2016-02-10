@@ -1,7 +1,6 @@
 notifications:
   email: false
 language: c 
-##NOTE: this will set CC=gcc which might cause trouble
 
 before_script:
   - WGET="travis_retry wget --continue --tries=20 --waitretry=10 --retry-connrefused --no-dns-cache --timeout 300"
@@ -32,15 +31,7 @@ before_script:
     fi
 
 script:
-  ## tests/Makefile handles most of generic logic
-  - "make -C tests/??-$BUILD_TYPE RUNALL=true summary"
-
-after_script:
-  ## Print a basic summary
-  - "echo 'Summary:'; cat tests/??-$BUILD_TYPE/summary"
-  - "FAILS=`grep -c  ' FAIL ' tests/??-$BUILD_TYPE/summary`"
-  ## This will detect whether the build should pass or fail
-  - "test $FAILS -eq 0; exit $?"
+  - "make -C tests/??-$BUILD_TYPE all"
 
 env:
   ## This magically kick-off parallel jobs for each of the for the sets
