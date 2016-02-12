@@ -1,6 +1,6 @@
 notifications:
   email: false
-language: c 
+language: generic 
 
 before_script:
   - WGET="travis_retry wget --continue --tries=20 --waitretry=10 --retry-connrefused --no-dns-cache --timeout 300"
@@ -45,25 +45,14 @@ before_script:
       cd .. &&	  
       sudo ldconfig &&
       sudo depmod -a &&
-      $WGET http://ftp.gnu.org/gnu/gcc/gcc-4.6.3/gcc-core-4.6.3.tar.bz2 &&
-      tar xvjf gcc-core-4.6.3.tar.bz2 &&
-      cd gcc-4.6.3 &&
-      mkdir build &&
-      cd build &&      
-      CFLAGS="-Wno-error" ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-languages=c --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --with-gnu-as --with-gnu-ld --disable-nls --with-headers=yes --disable-checking --without-headers &&
-      CFLAGS="-Wno-error" make &&
-      sudo PATH=${PATH}:${INSTPREFIX} make install &&
-      cd .. &&
-      cd .. &&
-      $WGET ftp://sources.redhat.com/pub/newlib/newlib-1.20.0.tar.gz &&
-      tar -xvf newlib-1.20.0.tar.gz &&
-      cd newlib-1.20.0 &&
-      mkdir m68k-obj &&
-      cd m68k-obj &&
-      ../configure --target=m68k-elf --prefix=${INSTPREFIX} --enable-newlib-reent-small --disable-malloc-debugging --enable-newlib-multithread --disable-newlib-io-float --disable-newlib-supplied-syscalls --disable-newlib-io-c99-formats --disable-newlib-mb --disable-newlib-atexit-alloc --enable-target-optspace --disable-shared --enable-static --enable-fast-install &&
-      make -j 6 &&
-      sudo PATH=${PATH}:${INSTPREFIX} make install &&
-      m68k-elf-gcc -v ;
+      $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
+      tar xjf coldfire*.tar.bz2 -C /tmp/ &&
+      /tmp/coldfire/bin/m68k-elf-gcc --version &&
+      sudo cp -f -r /tmp/coldfire/* /usr/local/ &&
+      rm -rf /tmp/coldfire coldfire*.tar.bz2   &&
+      sudo ldconfig &&
+      sudo depmod -a &&
+      m68k-elf-gcc --version; 
     fi
 
 script:
