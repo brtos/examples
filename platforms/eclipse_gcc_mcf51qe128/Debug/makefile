@@ -4,15 +4,15 @@
 
 -include ../makefile.init
 
-RM := rm -rf
+RM := usbdm-rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include hal/subdir.mk
+-include brtos/subdir.mk
 -include Startup_Code/subdir.mk
--include Sources_hal/subdir.mk
--include Sources_brtos/subdir.mk
 -include Sources/subdir.mk
--include Source_MemoryAllocation/subdir.mk
+-include MemoryAllocation/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -45,7 +45,7 @@ all: brtos_project.elf secondary-outputs
 brtos_project.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Coldfire C Linker'
-	m68k-elf-gcc -mcpu=51 -g3 -Os -Wl,--gc-sections -L"../Project_Settings/Linker_Files" -T "Linker-rom.ld" -Xlinker -Map="brtos_project.map"  -o "brtos_project.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	m68k-elf-gcc -mcpu=51 -g3 -Os -Wl,--gc-sections -L"../../../platforms/eclipse_gcc_mcf51qe128/Project_Settings/Linker_Files" -T "Linker-rom.ld" -Xlinker -Map="brtos_project.map"  -o "brtos_project.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -5,12 +5,12 @@
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="net.sourceforge.usbdm.cdt.coldfire.exe.debug.configuration.807480999" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<externalSettings/>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
 					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -21,16 +21,22 @@
 							<option defaultValue="net.sourceforge.usbdm.gnu.c.optimization.level.none" id="net.sourceforge.usbdm.cdt.toolchain.optimization.level.1736319250" name="Optimization level" superClass="net.sourceforge.usbdm.cdt.toolchain.optimization.level" value="net.sourceforge.usbdm.gnu.c.optimization.level.size" valueType="enumerated"/>
 							<option id="net.sourceforge.usbdm.cdt.coldfire.toolchain.mcpu.2132138010" name="Cpu (-mcpu=)" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.mcpu" value="net.sourceforge.usbdm.cdt.coldfire.toolchain.mcpu.51" valueType="enumerated"/>
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="net.sourceforge.usbdm.cdt.toolchain.targetPlatform.1556746831" name="USBDM common base platform" superClass="net.sourceforge.usbdm.cdt.toolchain.targetPlatform"/>
-							<builder buildPath="${workspace_loc:/brtos_project/Debug}" id="net.sourceforge.usbdm.cdt.toolchain.builder.1523960559" keepEnvironmentInBuildfile="true" managedBuildOn="false" name="Gnu Make Builder" superClass="net.sourceforge.usbdm.cdt.toolchain.builder"/>
+							<builder buildPath="${workspace_loc:/brtos_project/Debug}" id="net.sourceforge.usbdm.cdt.toolchain.builder.1523960559" keepEnvironmentInBuildfile="true" managedBuildOn="false" name="Gnu Make Builder" superClass="net.sourceforge.usbdm.cdt.toolchain.builder">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
+								</outputEntries>
+							</builder>
 							<tool id="net.sourceforge.usbdm.cdt.coldfire.toolchain.cppAssembler.2006780175" name="Coldfire Assembler" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.cppAssembler">
 								<option id="net.sourceforge.usbdm.cdt.toolchain.cppAssembler.preprocess.definedSymbols.694583539" name="Defined Symbols (-D)" superClass="net.sourceforge.usbdm.cdt.toolchain.cppAssembler.preprocess.definedSymbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_BUILD"/>
 								</option>
 								<option id="net.sourceforge.usbdm.cdt.toolchain.cppAssembler.Directories.includePaths.1365324906" name="Include paths (-I)" superClass="net.sourceforge.usbdm.cdt.toolchain.cppAssembler.Directories.includePaths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Project_Headers&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../brtos/brtos/includes&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../brtos/hal/MemoryAllocation&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../brtos/hal/GCC_CFV1&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/hal/GCC_CFV1&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/hal/MemoryAllocation&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/brtos/includes&quot;"/>
 								</option>
 								<inputType id="net.sourceforge.usbdm.cdt.coldfire.toolchain.cppAssembler.inputType.25922455" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.cppAssembler.inputType"/>
 							</tool>
@@ -39,11 +45,11 @@
 									<listOptionValue builtIn="false" value="DEBUG_BUILD"/>
 								</option>
 								<option id="net.sourceforge.usbdm.gnu.c.compiler.option.include.paths.1088941522" name="Include paths (-I)" superClass="net.sourceforge.usbdm.gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Project_Headers&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../brtos/brtos/includes&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../brtos/hal/GCC_CFV1&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../brtos/hal/MemoryAllocation&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/brtos/includes&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/hal/GCC_CFV1&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/hal/MemoryAllocation&quot;"/>
 								</option>
 								<inputType id="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.compiler.input.1208215421" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.compiler.input"/>
 							</tool>
@@ -62,6 +68,7 @@
 								<option id="gnu.c.link.option.paths.687199956" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Project_Settings/Linker_Files&quot;"/>
 								</option>
+								<option id="gnu.c.link.option.libs.1679010526" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1715576694" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -79,25 +86,26 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Source_MemoryAllocation|Sources_hal|Sources_brtos" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="*.txt" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Source_MemoryAllocation"/>
-						<entry excluding="*.txt" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Sources_brtos"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Sources_hal"/>
+						<entry excluding="MemoryAllocation|hal|brtos|Sources_brtos|Sources_hal|Source_MemoryAllocation" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="MemoryAllocation"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="brtos"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="hal"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="ilg.gnuarmeclipse.managedbuild.packs"/>
 		</cconfiguration>
 		<cconfiguration id="net.sourceforge.usbdm.cdt.coldfire.exe.release.configuration.1316162756">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="net.sourceforge.usbdm.cdt.coldfire.exe.release.configuration.1316162756" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<externalSettings/>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
 					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -191,4 +199,5 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="net.sourceforge.usbdm.cdt.tools.UsbdmManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

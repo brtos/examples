@@ -21,9 +21,9 @@ LIST_FILE_OUTPUTS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+hal \
+brtos \
 Startup_Code \
-Sources_hal \
-Sources_brtos \
 Sources \
-Source_MemoryAllocation \
+MemoryAllocation \
 
