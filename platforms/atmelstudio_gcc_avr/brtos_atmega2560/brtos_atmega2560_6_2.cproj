@@ -96,8 +96,8 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../../brtos/brtos/includes</Value>
-      <Value>../../../brtos/hal/Atmel_Studio_6_ATMEGA</Value>
+      <Value>../../../../brtos/brtos/includes</Value>
+      <Value>../../../../brtos/hal/Atmel_Studio_6_ATMEGA</Value>
       <Value>../../drivers</Value>
       <Value>../../includes</Value>
       <Value>../includes</Value>
@@ -120,59 +120,59 @@
     <OutputFileExtension>.elf</OutputFileExtension>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\brtos\brtos\BRTOS.c">
+    <Compile Include="..\..\..\brtos\brtos\BRTOS.c">
       <SubType>compile</SubType>
       <Link>brtos\BRTOS.c</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\includes\BRTOS.h">
+    <Compile Include="..\..\..\brtos\brtos\includes\BRTOS.h">
       <SubType>compile</SubType>
       <Link>brtos\includes\BRTOS.h</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\includes\OSInfo.h">
+    <Compile Include="..\..\..\brtos\brtos\includes\OSInfo.h">
       <SubType>compile</SubType>
       <Link>brtos\includes\OSInfo.h</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\includes\OSTime.h">
+    <Compile Include="..\..\..\brtos\brtos\includes\OSTime.h">
       <SubType>compile</SubType>
       <Link>brtos\includes\OSTime.h</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\includes\OS_types.h">
+    <Compile Include="..\..\..\brtos\brtos\includes\OS_types.h">
       <SubType>compile</SubType>
       <Link>brtos\includes\OS_types.h</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\includes\stimer.h">
+    <Compile Include="..\..\..\brtos\brtos\includes\stimer.h">
       <SubType>compile</SubType>
       <Link>brtos\includes\stimer.h</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\mbox.c">
+    <Compile Include="..\..\..\brtos\brtos\mbox.c">
       <SubType>compile</SubType>
       <Link>brtos\mbox.c</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\mutex.c">
+    <Compile Include="..\..\..\brtos\brtos\mutex.c">
       <SubType>compile</SubType>
       <Link>brtos\mutex.c</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\OSTime.c">
+    <Compile Include="..\..\..\brtos\brtos\OSTime.c">
       <SubType>compile</SubType>
       <Link>brtos\OSTime.c</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\queue.c">
+    <Compile Include="..\..\..\brtos\brtos\queue.c">
       <SubType>compile</SubType>
       <Link>brtos\queue.c</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\semaphore.c">
+    <Compile Include="..\..\..\brtos\brtos\semaphore.c">
       <SubType>compile</SubType>
       <Link>brtos\semaphore.c</Link>
     </Compile>
-    <Compile Include="..\..\brtos\brtos\stimer.c">
+    <Compile Include="..\..\..\brtos\brtos\stimer.c">
       <SubType>compile</SubType>
       <Link>brtos\stimer.c</Link>
     </Compile>
-    <Compile Include="..\..\brtos\hal\Atmel_Studio_6_ATMEGA\HAL.c">
+    <Compile Include="..\..\..\brtos\hal\Atmel_Studio_6_ATMEGA\HAL.c">
       <SubType>compile</SubType>
       <Link>brtos\hal\HAL.c</Link>
     </Compile>
-    <Compile Include="..\..\brtos\hal\Atmel_Studio_6_ATMEGA\HAL.h">
+    <Compile Include="..\..\..\brtos\hal\Atmel_Studio_6_ATMEGA\HAL.h">
       <SubType>compile</SubType>
       <Link>brtos\hal\HAL.h</Link>
     </Compile>
