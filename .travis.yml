@@ -21,11 +21,10 @@ before_script:
       libstdc++5:i386 libstdc++6:i386
 
   ## Install GCC dependencies
-  - sudo apt-get -qq install libmpc-dev libmpc2
+  - sudo apt-get -qq install libmpc2 libmpc-dev
 
   ## Install CFV1 GCC toolchain 
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then  
-      sudo apt-get -qq install libmpc-dev libmpc2 &&
       $WGET https://raw.githubusercontent.com/brtos/examples/master/tools/coldfire-gcc.tar.bz2 &&
       tar xjf coldfire*.tar.bz2 -C /tmp/ &&
       /tmp/coldfire/bin/m68k-elf-gcc --version &&
