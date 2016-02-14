@@ -12,6 +12,13 @@ before_script:
       sudo apt-get --no-install-suggests --no-install-recommends -qq install doxygen  &&
       doxygen --version ;
     fi	
+	
+  ## Install doxygen
+  - if [ ${BUILD_CATEGORY:-0} = cppcheck ] ; then
+      sudo apt-get -qq update &&
+      sudo apt-get --no-install-suggests --no-install-recommends -qq install cppcheck  &&
+      cppcheck --version ;
+    fi		
 
   ## Install avr toolchain
   - sudo apt-get -qq install gcc-avr avr-libc
@@ -21,7 +28,7 @@ before_script:
       libstdc++5:i386 libstdc++6:i386 libmpc2:i386
 
   ## Install GCC dependencies
-  - sudo apt-get -qq install libmpc2 libmpc-dev
+  #- sudo apt-get -qq install libmpc2 libmpc-dev
 
   ## Install CFV1 GCC toolchain 
   - if [ ${BUILD_ARCH:-0} = cfv1 ] ; then  
@@ -42,5 +49,6 @@ env:
   ## This magically kick-off parallel jobs for each of the for the sets
   ## of environment variable defined below
   ## - BUILD_TYPE='doxygen'  BUILD_CATEGORY='doxygen'
+  - BUILD_TYPE='cppcheck' BUILD_CATEGORY='cppcheck'
   - BUILD_TYPE='compile-cfv1-port' BUILD_CATEGORY='compile' BUILD_ARCH='cfv1'
   - BUILD_TYPE='compile-avr-port' BUILD_CATEGORY='compile'
