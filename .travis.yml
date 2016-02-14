@@ -11,14 +11,14 @@ before_script:
       sudo add-apt-repository ppa:libreoffice/libreoffice-4-4 -y && sudo apt-get -qq update &&
       sudo apt-get --no-install-suggests --no-install-recommends -qq install doxygen  &&
       doxygen --version ;
-    fi	
-	
-  ## Install doxygen
+    fi
+    
+    ## Install doxygen
   - if [ ${BUILD_CATEGORY:-0} = cppcheck ] ; then
       sudo apt-get -qq update &&
       sudo apt-get --no-install-suggests --no-install-recommends -qq install cppcheck  &&
       cppcheck --version ;
-    fi		
+    fi
 
   ## Install avr toolchain
   - sudo apt-get -qq install gcc-avr avr-libc
