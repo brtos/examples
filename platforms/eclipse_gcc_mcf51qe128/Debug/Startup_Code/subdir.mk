@@ -27,14 +27,14 @@ C_DEPS += \
 Startup_Code/%.o: ../Startup_Code/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Coldfire C Compiler'
-	m68k-elf-gcc -mcpu=51 -g3 -Os -ffunction-sections -fdata-sections -DDEBUG_BUILD -I"../../../platforms/eclipse_gcc_mcf51qe128/Project_Headers" -I"../../../platforms/eclipse_gcc_mcf51qe128/../../brtos/brtos/includes" -I"../../../platforms/eclipse_gcc_mcf51qe128/Sources" -I"../../../platforms/eclipse_gcc_mcf51qe128/../../brtos/hal/GCC_CFV1" -I"../../../platforms/eclipse_gcc_mcf51qe128/../../brtos/hal/MemoryAllocation" -Wall -std=c99 -c -fmessage-length=0 -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -o "$@" $<
+	m68k-elf-gcc -mcpu=51 -g3 -Os -ffunction-sections -fdata-sections -DDEBUG_BUILD -I../Project_Headers -I../Sources -I../../../brtos/brtos/includes -I../../../brtos/hal/MemoryAllocation -I../../../brtos/hal/GCC_CFV1 -Wall -std=c99 -c -fmessage-length=0 -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -o "$@" $<
 	@echo 'Finished building: $<'
 	@echo ' '
 
 Startup_Code/%.o: ../Startup_Code/%.S
 	@echo 'Building file: $<'
 	@echo 'Invoking: Coldfire Assembler'
-	m68k-elf-gcc -mcpu=51 -g3 -Os -ffunction-sections -fdata-sections -x assembler-with-cpp -DDEBUG_BUILD -I"../../../platforms/eclipse_gcc_mcf51qe128/Project_Headers" -I"../../../platforms/eclipse_gcc_mcf51qe128/Sources" -I"../../../platforms/eclipse_gcc_mcf51qe128/../../brtos/hal/GCC_CFV1" -I"../../../platforms/eclipse_gcc_mcf51qe128/../../brtos/hal/MemoryAllocation" -I"../../../platforms/eclipse_gcc_mcf51qe128/../../brtos/brtos/includes" -Wall -Wextra -c -fmessage-length=0  -o "$@" $<
+	m68k-elf-gcc -mcpu=51 -g3 -Os -ffunction-sections -fdata-sections -x assembler-with-cpp -DDEBUG_BUILD -I../Project_Headers -I../Sources -I../../../brtos/hal/GCC_CFV1 -I../../../brtos/hal/MemoryAllocation -I../../../brtos/brtos/includes -Wall -Wextra -c -fmessage-length=0  -o "$@" $<
 	@echo 'Finished building: $<'
 	@echo ' '
 

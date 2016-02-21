@@ -32,11 +32,11 @@
 									<listOptionValue builtIn="false" value="DEBUG_BUILD"/>
 								</option>
 								<option id="net.sourceforge.usbdm.cdt.toolchain.cppAssembler.Directories.includePaths.1365324906" name="Include paths (-I)" superClass="net.sourceforge.usbdm.cdt.toolchain.cppAssembler.Directories.includePaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Project_Headers&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/hal/GCC_CFV1&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/hal/MemoryAllocation&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/brtos/includes&quot;"/>
+									<listOptionValue builtIn="false" value="../Project_Headers"/>
+									<listOptionValue builtIn="false" value="../Sources"/>
+									<listOptionValue builtIn="false" value="../../../brtos/hal/GCC_CFV1"/>
+									<listOptionValue builtIn="false" value="../../../brtos/hal/MemoryAllocation"/>
+									<listOptionValue builtIn="false" value="../../../brtos/brtos/includes"/>
 								</option>
 								<inputType id="net.sourceforge.usbdm.cdt.coldfire.toolchain.cppAssembler.inputType.25922455" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.cppAssembler.inputType"/>
 							</tool>
@@ -45,11 +45,11 @@
 									<listOptionValue builtIn="false" value="DEBUG_BUILD"/>
 								</option>
 								<option id="net.sourceforge.usbdm.gnu.c.compiler.option.include.paths.1088941522" name="Include paths (-I)" superClass="net.sourceforge.usbdm.gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Project_Headers&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/brtos/includes&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/hal/GCC_CFV1&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../brtos/hal/MemoryAllocation&quot;"/>
+									<listOptionValue builtIn="false" value="../Project_Headers"/>
+									<listOptionValue builtIn="false" value="../Sources"/>
+									<listOptionValue builtIn="false" value="../../../brtos/brtos/includes"/>
+									<listOptionValue builtIn="false" value="../../../brtos/hal/MemoryAllocation"/>
+									<listOptionValue builtIn="false" value="../../../brtos/hal/GCC_CFV1"/>
 								</option>
 								<inputType id="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.compiler.input.1208215421" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.compiler.input"/>
 							</tool>
@@ -66,7 +66,7 @@
 							<tool id="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.linker.2002439306" name="Coldfire C Linker" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.linker">
 								<option id="net.sourceforge.usbdm.cdt.toolchain.c.linker.linkerFile.553700416" name="Linker File (-T option):" superClass="net.sourceforge.usbdm.cdt.toolchain.c.linker.linkerFile" value="Linker-rom.ld" valueType="string"/>
 								<option id="gnu.c.link.option.paths.687199956" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Project_Settings/Linker_Files&quot;"/>
+									<listOptionValue builtIn="false" value="../Project_Settings/Linker_Files"/>
 								</option>
 								<option id="gnu.c.link.option.libs.1679010526" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1715576694" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
@@ -122,10 +122,10 @@
 									<listOptionValue builtIn="false" value="RELEASE_BUILD"/>
 								</option>
 								<option id="net.sourceforge.usbdm.cdt.toolchain.cppAssembler.Directories.includePaths.238148757" name="Include paths (-I)" superClass="net.sourceforge.usbdm.cdt.toolchain.cppAssembler.Directories.includePaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Project_Headers&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}\..\brtos\brtos\includes&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}\..\brtos\hal\GCC_CFV1&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}\..\brtos\hal\MemoryAllocation&quot;"/>
+									<listOptionValue builtIn="false" value="../Project_Headers"/>
+									<listOptionValue builtIn="false" value="../../../brtos/brtos/includes"/>
+									<listOptionValue builtIn="false" value="../../../brtos/ha/GCC_CFV1"/>
+									<listOptionValue builtIn="false" value="../../../brtos/hal/MemoryAllocation"/>
 								</option>
 								<inputType id="net.sourceforge.usbdm.cdt.coldfire.toolchain.cppAssembler.inputType.410178477" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.cppAssembler.inputType"/>
 							</tool>
@@ -134,11 +134,11 @@
 									<listOptionValue builtIn="false" value="RELEASE_BUILD"/>
 								</option>
 								<option id="net.sourceforge.usbdm.gnu.c.compiler.option.include.paths.1380485823" name="Include paths (-I)" superClass="net.sourceforge.usbdm.gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Sources&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Project_Headers&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}\..\brtos\brtos\includes&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}\..\brtos\hal\GCC_CFV1&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}\..\brtos\hal\MemoryAllocation&quot;"/>
+									<listOptionValue builtIn="false" value="../Sources"/>
+									<listOptionValue builtIn="false" value="../Project_Headers"/>
+									<listOptionValue builtIn="false" value="../../../brtos/brtos/includes"/>
+									<listOptionValue builtIn="false" value="../../../brtos/hal/GCC_CFV1"/>
+									<listOptionValue builtIn="false" value="../../../brtos/hal/MemoryAllocation"/>
 								</option>
 								<inputType id="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.compiler.input.854246255" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.compiler.input"/>
 							</tool>
@@ -155,7 +155,7 @@
 							<tool id="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.linker.1941821311" name="Coldfire C Linker" superClass="net.sourceforge.usbdm.cdt.coldfire.toolchain.c.linker">
 								<option id="net.sourceforge.usbdm.cdt.toolchain.c.linker.linkerFile.2026347420" name="Linker File (-T option):" superClass="net.sourceforge.usbdm.cdt.toolchain.c.linker.linkerFile" value="Linker-rom.ld" valueType="string"/>
 								<option id="gnu.c.link.option.paths.798368300" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/Project_Settings/Linker_Files&quot;"/>
+									<listOptionValue builtIn="false" value="../Project_Settings/Linker_Files"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.2028412387" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
