@@ -12,30 +12,26 @@ void exec(void)
   }
 }
 
-
-
-
-
-
 void exec2(void)
 {
 
+  uint32_t run = 0;
   while(1)
   {
+	printf("Task 2, run: %u\r\n", (uint32_t)run++);
+	fflush(stdout);
     DelayTask(100);
   }
 }
 
-
-
-
-
-
 void exec3(void)
 {
+  uint32_t run = 0;
   while(1)
   {
-	  DelayTask(100);
+	  printf("Task 3, run: %u\r\n", (uint32_t)run++);
+	  fflush(stdout);
+	  DelayTask(200);
 
   }
 }

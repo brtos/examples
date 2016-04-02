@@ -37,7 +37,7 @@
 #include <Windows.h>
 
 /// Supported processors
-#define X86					99
+#define X86				99
 
 /// Define the used processor
 #define PROCESSOR 		X86
@@ -81,6 +81,9 @@ extern INT32U SPvalue;
 
 /// Defines the change context command of the choosen processor
 #define ChangeContext()			GenerateSimulatedInterrupt( INTERRUPT_SWC )
+
+#define OS_INT_ENTER()			iNesting++;
+#define OS_INT_EXIT()			if(iNesting > 0) iNesting--;
 
 
 /* Critical section handling. */
