@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:brtos/brtos.git
+	branch = master
+	commit = 08407c88610f51bdb86fde64d95f395e479d48ff
+	parent = 183603321b7a63fe644aff055157c9f81c788715
+	cmdver = 0.3.0
