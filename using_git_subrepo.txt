@@ -1,0 +1,15 @@
+
+## To use BRTOS in your project, pull and merge the BRTOS git repo inside your project's folder using git subrepo command. See below:
+
+## install git-subrepo. See https://github.com/ingydotnet/git-subrepo 
+## clone brtos as a subrepo
+git subrepo clone git@github.com:brtos/brtos.git brtos -b master
+
+## To update, do 
+git subrepo pull brtos -b master
+
+## To check status, do 
+git subrepo status brtos
+
+## To push changes
+git subrepo push brtos -b master
