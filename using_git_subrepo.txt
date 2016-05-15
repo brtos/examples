@@ -12,4 +12,4 @@ git subrepo pull brtos -b master
 git subrepo status brtos
 
 ## To push changes
-git subrepo push brtos -b master
+git subrepo push brtos master -b master
