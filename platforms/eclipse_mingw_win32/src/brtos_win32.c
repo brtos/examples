@@ -18,11 +18,15 @@
 
 BRTOS_TH th1, th2, th3;
 
+extern void stimer_test(void);
+
 int main(void) {
 	  puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
 
 	  // Initialize BRTOS
 	  BRTOS_Init();
+
+	  stimer_test();
 
 	  if(OSInstallTask(&exec,"Teste 1",16,3,&th1) != OK)
 	  {

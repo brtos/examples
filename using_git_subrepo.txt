@@ -6,10 +6,10 @@
 git subrepo clone git@github.com:brtos/brtos.git brtos -b master
 
 ## To update, do 
-git subrepo pull brtos -b master
+git subrepo pull brtos
 
 ## To check status, do 
 git subrepo status brtos
 
 ## To push changes
-git subrepo push brtos master -b master
+git subrepo push brtos
