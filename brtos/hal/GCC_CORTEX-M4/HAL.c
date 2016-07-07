@@ -86,7 +86,6 @@ void OSRTCSetup(void)
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
-
 void TickTimer(void)
 {
   // ************************
@@ -158,7 +157,7 @@ __attribute__ ((naked)) void SwitchContext(void)
   // ************************
   // Interrupt Exit
   // ************************
-  OS_EXIT_INT();
+  OS_INT_EXIT();
   OS_RESTORE_ISR();
   // ************************
 }
@@ -199,6 +198,12 @@ void          OS_TaskReturn             (void);
   void CreateVirtualStack(void(*FctPtr)(void), INT16U NUMBER_OF_STACKED_BYTES)
 #endif
 {  
+	#ifdef WATERMARK
+	OS_CPU_TYPE *temp_stk_pt = (OS_CPU_TYPE*)&STACK[iStackAddress];
+	
+	*temp_stk_pt++ = (INT32U)(((NumberOfInstalledTasks + '0') << 24) + 'T' + ('S' << 8) + ('K' << 16));
+	#endif
+	
 	OS_CPU_TYPE *stk_pt = (OS_CPU_TYPE*)&STACK[iStackAddress + (NUMBER_OF_STACKED_BYTES / sizeof(OS_CPU_TYPE))];
 	
 	*--stk_pt = (INT32U)INITIAL_XPSR;                   	/* xPSR                                                   */
@@ -229,6 +234,12 @@ void          OS_TaskReturn             (void);
     *--stk_pt = (INT32U)0x06060606u;                        /* R6                                                     */
     *--stk_pt = (INT32U)0x05050505u;                        /* R5                                                     */
     *--stk_pt = (INT32U)0x04040404u;                        /* R4                                                     */
+    
+	#ifdef WATERMARK
+	do{
+		*--stk_pt = 0x24242424;
+	}while (stk_pt > temp_stk_pt);    
+	#endif    
 }
 #endif
 
@@ -274,11 +285,6 @@ void          OS_TaskReturn             (void);
 #endif
 
 
-inline void CriticalDecNesting(void)
-{
-	UserEnterCritical();
-	iNesting--;
-}
 
 
 

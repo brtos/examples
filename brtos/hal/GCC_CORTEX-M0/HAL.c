@@ -155,7 +155,7 @@ __attribute__ ((naked)) void SwitchContext(void)
   // ************************
   // Interrupt Exit
   // ************************
-  OS_EXIT_INT();
+  OS_INT_EXIT();
   OS_RESTORE_ISR();
   // ************************
 }
@@ -186,7 +186,6 @@ __attribute__ ((naked)) void SwitchContextToFirstTask(void)
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-void          OS_TaskReturn             (void);
 
 #if (!BRTOS_DYNAMIC_TASKS_ENABLED)
 #if (TASK_WITH_PARAMETERS == 1)
@@ -195,6 +194,12 @@ void          OS_TaskReturn             (void);
   void CreateVirtualStack(void(*FctPtr)(void), INT16U NUMBER_OF_STACKED_BYTES)
 #endif
 {  
+	#ifdef WATERMARK
+	OS_CPU_TYPE *temp_stk_pt = (OS_CPU_TYPE*)&STACK[iStackAddress];
+	
+	*temp_stk_pt++ = (INT32U)(((NumberOfInstalledTasks + '0') << 24) + 'T' + ('S' << 8) + ('K' << 16));
+	#endif
+
 	OS_CPU_TYPE *stk_pt = (OS_CPU_TYPE*)&STACK[iStackAddress + (NUMBER_OF_STACKED_BYTES / sizeof(OS_CPU_TYPE))];
 	
 	*--stk_pt = (INT32U)INITIAL_XPSR;                   	/* xPSR                                                   */
@@ -224,6 +229,12 @@ void          OS_TaskReturn             (void);
     *--stk_pt = (INT32U)0x10101010u;                        /* R10                                                    */
     *--stk_pt = (INT32U)0x09090909u;                        /* R9                                                     */
     *--stk_pt = (INT32U)0x08080808u;                        /* R8                                                     */
+    
+	#ifdef WATERMARK
+	do{
+		*--stk_pt = 0x24242424;
+	}while (stk_pt > temp_stk_pt);    
+	#endif
 }
 #endif
 
@@ -267,13 +278,6 @@ void          OS_TaskReturn             (void);
     return (unsigned int)stk_pt;    
 }
 #endif
-
-inline void CriticalDecNesting(void)
-{
-	UserEnterCritical();
-	iNesting--;
-}
-
 
 
 
